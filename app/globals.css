@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-lexend);
+  color: #e0e0e0;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+
+.floating-icon {
+  position: absolute;
+  z-index: 0;
+  color: #ffffff;
+  opacity: 0.05;
+  animation: float 20s infinite linear;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* --- Floating Icons Background --- */
+.floating-icon.i1 { left: 10%; top: 15%; animation-duration: 25s; }
+.floating-icon.i2 { left: 80%; top: 20%; animation-duration: 30s; }
+.floating-icon.i3 { left: 5%; top: 70%; animation-duration: 22s; }
+.floating-icon.i4 { left: 90%; top: 85%; animation-duration: 35s; }
+.floating-icon.i5 { left: 50%; top: 50%; animation-duration: 28s; }
+.floating-icon.i6 { left: 20%; top: 90%; animation-duration: 24s; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* --- Interactive Element Styles --- */
+.mindrax-title {
+  color: #a855f7;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.mindrax-title:hover {
+  transform: scale(1.5);
+  color: #c084fc;
+}
+
+/* MODIFIED: Keyframes for the slogan animation */
+@keyframes highlightWord {
+  /* The word starts at its specific assigned color and fades to the highlight color */
+  0%, 100% {
+    color: currentColor; /* Uses the color from the Tailwind class */
+  }
+  /* The highlight is at its peak */
+  50% {
+    color: #c084fc; /* Light Purple */
+  }
+}
+
+.slogan-word {
+  display: inline-block;
+  animation: highlightWord 8s infinite;
+}
+
+.content-type-button {
+  @apply p-4 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center space-y-2;
+  background: rgba(128, 128, 128, 0.1);
+  border-color: rgba(128, 128, 128, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.content-type-button:hover {
+  border-color: rgba(192, 132, 252, 0.5);
+  background: rgba(192, 132, 252, 0.1);
+}
+
+.content-type-button.selected {
+  border-color: #c084fc;
+  background: rgba(192, 132, 252, 0.2);
+  box-shadow: 0 0 15px rgba(192, 132, 252, 0.3);
+}
+
+.glossy-button {
+  background: linear-gradient(45deg, #a855f7, #6d28d9);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1;
+}
+
+.glossy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+}
+
+.glossy-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+}
+
+.glossy-button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.glossy-button:disabled {
+  background: #374151;
+  cursor: not-allowed;
+}
+
+.glossy-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
