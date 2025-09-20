@@ -24,12 +24,20 @@ body {
 }
 
 /* --- Floating Icons Background --- */
+/* Adjusted positions for better responsiveness */
 .floating-icon.i1 { left: 10%; top: 15%; animation-duration: 25s; }
 .floating-icon.i2 { left: 80%; top: 20%; animation-duration: 30s; }
 .floating-icon.i3 { left: 5%; top: 70%; animation-duration: 22s; }
 .floating-icon.i4 { left: 90%; top: 85%; animation-duration: 35s; }
 .floating-icon.i5 { left: 50%; top: 50%; animation-duration: 28s; }
 .floating-icon.i6 { left: 20%; top: 90%; animation-duration: 24s; }
+
+/* Hide some icons on smaller screens to reduce clutter */
+@media (max-width: 768px) {
+  .floating-icon.i2, .floating-icon.i4, .floating-icon.i6 {
+    display: none;
+  }
+}
 
 @keyframes float {
   0% { transform: translateY(0) rotate(0deg); }
@@ -44,17 +52,14 @@ body {
 }
 
 .mindrax-title:hover {
-  transform: scale(1.5);
+  transform: scale(1.1); /* Reduced scale for better balance */
   color: #c084fc;
 }
 
-/* MODIFIED: Keyframes for the slogan animation */
 @keyframes highlightWord {
-  /* The word starts at its specific assigned color and fades to the highlight color */
   0%, 100% {
-    color: currentColor; /* Uses the color from the Tailwind class */
+    color: currentColor;
   }
-  /* The highlight is at its peak */
   50% {
     color: #c084fc; /* Light Purple */
   }
@@ -66,7 +71,7 @@ body {
 }
 
 .content-type-button {
-  @apply p-4 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center space-y-2;
+  @apply p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center space-y-2 text-center;
   background: rgba(128, 128, 128, 0.1);
   border-color: rgba(128, 128, 128, 0.2);
   backdrop-filter: blur(5px);
@@ -92,7 +97,7 @@ body {
   z-index: 1;
 }
 
-.glossy-button:hover {
+.glossy-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
 }
@@ -110,16 +115,12 @@ body {
   transition: transform 0.5s ease;
 }
 
-.glossy-button:hover::before {
+.glossy-button:hover:not(:disabled)::before {
   transform: translate(-50%, -50%) scale(1);
 }
 
 .glossy-button:disabled {
   background: #374151;
   cursor: not-allowed;
-}
-
-.glossy-button:disabled:hover {
-  transform: none;
-  box-shadow: none;
+  opacity: 0.6;
 }

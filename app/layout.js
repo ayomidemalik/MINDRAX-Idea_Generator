@@ -23,7 +23,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* The unnecessary wrapper div has been removed */}
       <body className={`${lexend.variable} ${anton.variable} font-sans`}>
         {children}
       </body>

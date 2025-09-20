@@ -11,16 +11,15 @@ module.exports = {
         sans: ['var(--font-lexend)'],
         display: ['var(--font-anton)'],
       },
-      // Add the custom color palette for the slogan
       colors: {
         slogan: {
-          1: '#FFFFFF', // White
+          1: '#FFFFFF',
           2: '#F5F5F5',
           3: '#EBEBEB',
           4: '#E0E0E0',
           5: '#D6D6D6',
           6: '#CCCCCC',
-          7: '#C2C2C2', // Light Gray
+          7: '#C2C2C2',
         },
       },
       keyframes: {
@@ -38,12 +37,11 @@ module.exports = {
           '100%': { transform: 'translateY(0) rotate(360deg)' },
         },
         highlightWord: {
-          // The animation will now start from the word's specific color
           '0%, 100%': {
             color: 'currentColor',
           },
           '50%': {
-            color: '#c084fc', // Highlight color
+            color: '#c084fc',
           },
         },
       },
@@ -54,6 +52,5 @@ module.exports = {
       },
     },
   },
-  // Added the typography plugin for better text rendering
   plugins: [require('@tailwindcss/typography')],
 }
